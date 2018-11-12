@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar #artist (ionInput)="getAlbums(artist.value)" placeholder="Buscar albums..." debounce="1500"></ion-searchbar>
+    <ion-item>
+      <ion-icon name="heart" icon-only></ion-icon>
+      <ion-badge color="accent">{{totalLikes}}</ion-badge>
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-content padding class="outer-content">
+    <ion-grid>
+      <ion-row>
+          <h1 padding *ngIf="albumName!=''">Álbumes encontrados de {{albumName}}</h1>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 *ngFor="let album of albums">
+            <ion-card>
+              <img src="{{album.artworkUrl100 | imgResChanger}}"/>
+              <ion-card-content>
+                <ion-card-title>
+                  <h1>{{album.collectionName}}</h1>
+                </ion-card-title>
+                <h2>
+                  {{album.artistName}}
+                </h2>
+                <h3>
+                  {{album.releaseDate}}
+                </h3>
+                <p>Nº de canciones: {{album.trackCount}}</p>
+                <button ion-button color="dark" clear>
+                  <ion-icon name="heart"></ion-icon>
+                </button>
+                <button ion-button color="dark" clear>
+                  <ion-icon name="heart-outline"></ion-icon>
+                </button>
+              </ion-card-content>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-content>
