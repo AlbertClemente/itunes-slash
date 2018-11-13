@@ -22,19 +22,11 @@ export class ItunesProvider {
     console.log('Service API iTunes listo!');
   }
 
-  /*getArtistSongs(artistName: string): Promise<Song[]> {
-    this.searchKind = '"&entity=song';
-    return this.http.get(this.apiRoot+artistName+this.searchKind)
-    .map((res: any) =>{
-      return res.map(res=>{deserialize(Song, res)});
-    }).toPromise();
-  }*/
   getArtistSongs(artistName: string): Promise<Song[]> {
     this.searchKind = '"&entity=song';
     return this.http.get(this.apiRoot+artistName+this.searchKind)
     .map((res: any) =>{
-      console.log(res.results);
-      return res.map(res=>{deserialize(Song, res)});
+      return res.results.map(results=>{return deserialize(Song, results)});
     }).toPromise();
   }
 
@@ -42,7 +34,7 @@ export class ItunesProvider {
     this.searchKind = '"&entity=album';
     return this.http.get(this.apiRoot+artistName+this.searchKind)
     .map((res: any) =>{
-      return res.map(res=>{deserialize(Album, res)});
+      return res.results.map(results=>{return deserialize(Album, results)});
     }).toPromise();
   }
 }

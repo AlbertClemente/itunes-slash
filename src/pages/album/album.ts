@@ -48,6 +48,7 @@ export class AlbumPage {
     .then(
       res => {
         this.albums = res;
+        console.log(this.albums);
       }
     )
     .catch(
