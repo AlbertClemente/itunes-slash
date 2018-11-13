@@ -1,4 +1,4 @@
-import { Song } from '../../interfaces/song.interface';
+import { Song } from '../../models/song';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
@@ -8,7 +8,6 @@ import { LoadingController } from 'ionic-angular';
 import { ItunesProvider } from '../../providers/itunes/itunes';
 
 //model
-import {  } from '../../interfaces/song.interface';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

@@ -1,4 +1,4 @@
-import { Album } from './../../interfaces/album.interface';
+import { Album } from './../../models/album';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
