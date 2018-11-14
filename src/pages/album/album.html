@@ -15,7 +15,7 @@
   <ion-content padding class="outer-content">
     <ion-grid>
       <ion-row>
-          <h1 padding *ngIf="albumName!=''">Álbumes encontrados de {{albumName}}</h1>
+          <h1 padding *ngIf="albumName!=''">Álbumes encontrados de {{albumName | titlecase}}</h1>
       </ion-row>
       <ion-row>
         <ion-col col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 *ngFor="let album of albums">

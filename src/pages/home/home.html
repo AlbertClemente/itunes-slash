@@ -1,26 +1,32 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-searchbar #artist (ionInput)="getSongs(artist.value)" placeholder="Buscar canciones..." debounce="1500"></ion-searchbar>
-    <ion-item item-end>
-      <ion-icon name="heart"></ion-icon>
-      <ion-badge color="accent">{{totalLikes}}</ion-badge>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col auto>
+          <ion-searchbar #artist (ionInput)="getSongs(artist.value)" placeholder="Buscar canciones..." debounce="1500"></ion-searchbar>
+        </ion-col>
+        <ion-col col-1>
+          <div id="totalLikes">
+              <ion-icon name="heart"></ion-icon>
+              <ion-badge color="accent" id="numTotalLikes">{{totalLikes}}</ion-badge>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding class="outer-content">
+<ion-content>
   <ion-grid>
     <ion-row>
-        <h1 padding *ngIf="artistName!=''">Canciones encontradas de {{artistName}}</h1>
+        <h1 padding *ngIf="artistName!=''">Canciones encontradas de {{artistName | titlecase}}</h1>
     </ion-row>
     <ion-row>
-
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 *ngFor="let song of songs">
+      <ion-col col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 *ngFor="let song of songs">
         <ion-card>
           <img src="{{song.artworkUrl100 | imgResChanger}}"/>
           <ion-card-content>
@@ -30,10 +36,10 @@
             <h2>
               {{song.artistName}}
             </h2>
-            <button ion-button color="dark" clear (click)=likeSong(like) *ngIf=like item-end>
+            <button ion-button color="dark" clear (click)=likeSong(like) *ngIf=like no-padding>
               <ion-icon name="heart"></ion-icon>
             </button>
-            <button ion-button color="dark" clear (click)=likeSong(like) *ngIf=!like item-end>
+            <button ion-button color="dark" clear (click)=likeSong(like) *ngIf=!like no-padding end>
               <ion-icon name="heart-outline"></ion-icon>
             </button>
           </ion-card-content>
